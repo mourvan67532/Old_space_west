@@ -64,7 +64,7 @@ print("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 cont() #função
 
                                                                                                                                             
-                                                                                                                                            
+#https://ascii-art.botecodigital.dev.br/#ascii-convertido                                                                                                                                            
                                                                                                                                             
                                                                                                                                             
                                                                                                                                             

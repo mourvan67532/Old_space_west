@@ -27,7 +27,7 @@ def todas_av(b): #função
     for i in b: #imprimir as aventuras
         print(i['Av'])
 
-with open('txt/rpg_texto.txt') as texto:
+with open('txt/rpg_texto.txt', 'r', encoding='utf-8') as texto:
     ler_texto = texto.read()
 print(ler_texto)
 
@@ -67,6 +67,26 @@ with open('csv/old_space_west.csv', 'r', encoding='utf-8') as pla: #abrir o csv
 #https://ascii-art.botecodigital.dev.br/#ascii-convertido                                                                                                                                            
                                                                                                                                             
 #***************************************************************************************************
+ja_lido = []
+
+final = 0
+
+def gerar_numero():
+    global numero_maximo
+    global final
+    acabou = 404
+    if len(ja_lido) >= 39:
+        final = 10
+        print("acabou")
+        return acabou
+    while True:
+        numero_maximo = 39 - len(ja_lido)
+        numero = random.randint(0, numero_maximo)
+        if numero not in ja_lido:
+            return numero
+
+def apaga(copia): #função
+    del a[copia] #apagar a aventura
 
 def enviar_ave(c):
     print(a[c]['Av'])
@@ -96,22 +116,34 @@ def escolhido_2(d):
 
 
 def opcao_escolher(c):
-    escolheu = int(input("Qual opção você escolhe: "))
-    if escolheu == 1:
+    escolheu = 0
+    while escolheu != '1' and escolheu != '2':
+       escolheu = input("Qual opção você escolhe: ")
+    if escolheu == '1':
         escolhido_1(c)
-    elif escolheu == 2:
+    elif escolheu == '2':
         escolhido_2(c)
     
 
 
 def play():
-    numero = random.randint(0, 40)
-    enviar_ave(numero)
-    opcao_1(numero)
-    opcao_2(numero)
-    opcao_escolher(numero)
-
-
+    numero = 0
+    while True:
+        if final != 10:
+            if numero == 404:
+                print("END GAME")
+                break
+            numero = gerar_numero()
+            ja_lido.append(numero)
+            print(numero)
+            enviar_ave(numero)
+            opcao_1(numero)
+            opcao_2(numero)
+            opcao_escolher(numero)
+            apaga(numero)
+        else:
+            print("END GAME")
+            break
 
 
 

@@ -72,21 +72,18 @@ ja_lido = []
 final = 0
 
 def gerar_numero():
-    global numero_maximo
     global final
     acabou = 404
-    if len(ja_lido) >= 39:
+    if len(ja_lido) >= 40:
         final = 10
-        print("acabou")
         return acabou
     while True:
-        numero_maximo = 39 - len(ja_lido)
-        numero = random.randint(0, numero_maximo)
+        numero = random.randint(0, 39)
         if numero not in ja_lido:
+            ja_lido.append(numero)
             return numero
 
-def apaga(copia): #função
-    del a[copia] #apagar a aventura
+
 
 def enviar_ave(c):
     print(a[c]['Av'])
@@ -99,20 +96,24 @@ def opcao_2(c):
 
 
 def escolhido_1(d):
+    global final
     chance_1 = random.randint(0, 100)
     csv_chance_1 = int(a[d]['chance_s_1'])
     if chance_1 <= csv_chance_1:
         print(a[d]['sucesso_1'])
     elif chance_1 > csv_chance_1:
         print(a[d]['derrota_1'])
+        final = 999
 
 def escolhido_2(d):
+    global final
     chance_2 = random.randint(0, 100)
     csv_chance_2 = int(a[d]['chance_s_2'])
     if chance_2 <= csv_chance_2:
         print(a[d]['sucesso_2'])
     elif chance_2 > csv_chance_2:
         print(a[d]['derrota_2'])
+        final = 999
 
 
 def opcao_escolher(c):
@@ -129,21 +130,23 @@ def opcao_escolher(c):
 def play():
     numero = 0
     while True:
-        if final != 10:
+        if final == 999:
+            print("☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠_GAME OVER_☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠")
+            break
+        else:
+            numero = gerar_numero()
             if numero == 404:
                 print("END GAME")
+                print("Parabéns por chegar até aqui! Esperamos que você tenha se divertido e desafiado suas habilidades.")
+                print("Agradecemos por jogar! Se você deseja tentar novamente ou explorar novos desafios, fique à vontade para reiniciar o jogo. Até a próxima!")
                 break
-            numero = gerar_numero()
-            ja_lido.append(numero)
             print(numero)
+            print(ja_lido)
             enviar_ave(numero)
             opcao_1(numero)
             opcao_2(numero)
             opcao_escolher(numero)
-            apaga(numero)
-        else:
-            print("END GAME")
-            break
+        
 
 
 

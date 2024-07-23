@@ -113,7 +113,7 @@ def escolhido_2(d):
         print(a[d]['sucesso_2'])
     elif chance_2 > csv_chance_2:
         print(a[d]['derrota_2'])
-        final = 999
+        final = 999 
 
 
 def opcao_escolher(c):
@@ -130,6 +130,7 @@ def opcao_escolher(c):
 def play():
     numero = 0
     while True:
+        print("⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠")
         if final == 999:
             print("☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠_GAME OVER_☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠")
             break
@@ -140,8 +141,6 @@ def play():
                 print("Parabéns por chegar até aqui! Esperamos que você tenha se divertido e desafiado suas habilidades.")
                 print("Agradecemos por jogar! Se você deseja tentar novamente ou explorar novos desafios, fique à vontade para reiniciar o jogo. Até a próxima!")
                 break
-            print(numero)
-            print(ja_lido)
             enviar_ave(numero)
             opcao_1(numero)
             opcao_2(numero)

@@ -86,6 +86,7 @@ def gerar_numero():
 
 
 def enviar_ave(c):
+    print(a[c]['Cenarios'])
     print(a[c]['Av'])
 
 def opcao_1(c):

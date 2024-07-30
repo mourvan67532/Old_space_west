@@ -67,85 +67,85 @@ with open('csv/old_space_west.csv', 'r', encoding='utf-8') as pla: #abrir o csv
 #https://ascii-art.botecodigital.dev.br/#ascii-convertido                                                                                                                                            
                                                                                                                                             
 #***************************************************************************************************
-ja_lido = []
+ja_lido = [] # Lista vazia para armazenar números já sorteados.
 
-final = 0
+final = 0 # Variável que indica o estado final do jogo.
 
 def gerar_numero():
-    global final
-    acabou = 404
-    if len(ja_lido) >= 40:
-        final = 10
-        return acabou
-    while True:
-        numero = random.randint(0, 39)
-        if numero not in ja_lido:
-            ja_lido.append(numero)
-            return numero
+    global final # Permite modificar a variável 'final' globalmente.
+    acabou = 404 # Valor indicativo de término do jogo.
+    if len(ja_lido) >= 40: # Verifica se já foram sorteados 40 números.
+        final = 10 # Define o estado final como 10.
+        return acabou # Retorna o valor 'acabou' indicando o fim do jogo.
+    while True: # Loop para gerar números aleatórios únicos.
+        numero = random.randint(0, 39) # Gera um número aleatório de 0 a 39.
+        if numero not in ja_lido: # Verifica se o número já foi sorteado.
+            ja_lido.append(numero) # Adiciona o número à lista de números sorteados.
+            return numero # Retorna o número gerado.
 
 
 
-def enviar_ave(c):
-    print(a[c]['Cenarios'])
-    print(a[c]['Av'])
+def enviar_ave(c): # Imprime o cenário correspondente ao índice 'c'.
+    print(a[c]['Cenarios']) # Imprime a descrição da ave correspondente ao índice 'c'.
+    print(a[c]['Av']) # Imprime a primeira opção relacionada ao índice 'c'.
 
 def opcao_1(c):
-    print("Opção 1:",a[c]['op1'])
+    print("Opção 1:",a[c]['op1']) # Imprime a primeira opção relacionada ao índice 'c'.
 
 def opcao_2(c):
-    print("Opção 2:",a[c]['op2'])
+    print("Opção 2:",a[c]['op2']) # Imprime a segunda opção relacionada ao índice 'c'.
 
 
 def escolhido_1(d):
-    global final
-    chance_1 = random.randint(0, 100)
-    csv_chance_1 = int(a[d]['chance_s_1'])
-    if chance_1 <= csv_chance_1:
-        print(a[d]['sucesso_1'])
-    elif chance_1 > csv_chance_1:
-        print(a[d]['derrota_1'])
-        final = 999
+    global final # Permite modificar a variável 'final' globalmente.
+    chance_1 = random.randint(0, 100) # Gera uma chance aleatória de sucesso.
+    csv_chance_1 = int(a[d]['chance_s_1']) # Obtém a chance de sucesso do arquivo CSV.
+    if chance_1 <= csv_chance_1: # Verifica se a chance de sucesso foi alcançada.
+        print(a[d]['sucesso_1']) # Imprime a mensagem de sucesso correspondente ao índice 'd'.
+    elif chance_1 > csv_chance_1: # Verifica se a chance de sucesso foi alcançada.
+        print(a[d]['derrota_1']) # Imprime a mensagem de derrota correspondente ao índice 'd'.
+        final = 999 # Define o estado final como 999 em caso de derrota.
 
 def escolhido_2(d):
-    global final
-    chance_2 = random.randint(0, 100)
-    csv_chance_2 = int(a[d]['chance_s_2'])
-    if chance_2 <= csv_chance_2:
-        print(a[d]['sucesso_2'])
-    elif chance_2 > csv_chance_2:
-        print(a[d]['derrota_2'])
-        final = 999 
+    global final # Permite modificar a variável 'final' globalmente.
+    chance_2 = random.randint(0, 100) # Gera uma chance aleatória de sucesso.
+    csv_chance_2 = int(a[d]['chance_s_2']) # Obtém a chance de sucesso do arquivo CSV.
+    if chance_2 <= csv_chance_2: # Verifica se a chance de sucesso foi alcançada.
+        print(a[d]['sucesso_2']) # Imprime a mensagem de sucesso correspondente ao índice 'd'.
+    elif chance_2 > csv_chance_2: # Verifica se a chance de sucesso foi alcançada.
+        print(a[d]['derrota_2']) # Imprime a mensagem de derrota correspondente ao índice 'd'.
+        final = 999 # Define o estado final como 999 em caso de derrota.
 
 
 def opcao_escolher(c):
-    escolheu = 0
-    while escolheu != '1' and escolheu != '2':
-       escolheu = input("Qual opção você escolhe: ")
+    escolheu = 0 # Inicializa a variável de escolha.
+    while escolheu != '1' and escolheu != '2': # Loop até que o usuário escolha 1 ou 2.
+       escolheu = input("Qual opção você escolhe: ") # Solicita a escolha do usuário.
     if escolheu == '1':
-        escolhido_1(c)
+        escolhido_1(c) # Chama a função correspondente à escolha '1'.
     elif escolheu == '2':
-        escolhido_2(c)
+        escolhido_2(c) # Chama a função correspondente à escolha '2'.
     
 
 
-def play():
-    numero = 0
-    while True:
+def play(): 
+    numero = 0 # Inicializa o número.
+    while True: # Loop principal do jogo.
         print("⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠")
-        if final == 999:
+        if final == 999: # Verifica se o estado final é 999 (jogo terminado).
             print("☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠_GAME OVER_☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠")
-            break
+            break # Encerra o loop se o jogo terminou.
         else:
-            numero = gerar_numero()
-            if numero == 404:
+            numero = gerar_numero() # Gera um novo número.
+            if numero == 404: # Verifica se o número gerado indica o fim do jogo.
                 print("END GAME")
                 print("Parabéns por chegar até aqui! Esperamos que você tenha se divertido e desafiado suas habilidades.")
                 print("Agradecemos por jogar! Se você deseja tentar novamente ou explorar novos desafios, fique à vontade para reiniciar o jogo. Até a próxima!")
-                break
-            enviar_ave(numero)
-            opcao_1(numero)
-            opcao_2(numero)
-            opcao_escolher(numero)
+                break # Encerra o loop se o jogo terminou.
+            enviar_ave(numero) # Mostra o cenário e a ave correspondente ao número.
+            opcao_1(numero) # Mostra a primeira opção correspondente ao número.
+            opcao_2(numero) # Mostra a segunda opção correspondente ao número.
+            opcao_escolher(numero) # Solicita e processa a escolha do usuário.
         
 
 
